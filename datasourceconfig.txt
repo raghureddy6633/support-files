@@ -1,0 +1,116 @@
+--------------spring data application.properties----------------------
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/zingplay
+spring.datasource.username=root
+spring.datasource.password=Raghu@6633
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.show-sql=false
+
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect
+spring.mvc.pathmatch.matching-strategy=ant-path-matcher
+spring.jackson.serialization.fail-on-empty-beans=false
+
+
+server.port=8080
+
+-------------------------------------------------------------- spring Jdbc application properties
+#spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/chanajor
+spring.datasource.username=root
+spring.datasource.password=Raghu@6633
+--------------------------------------------------------------------------------------
+	---------Swagger dependency--------
+	<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+-------------------------------------------------------------------------------------------------------------
+		xml logging 
+		
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="com.test.log4j" status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c:%L - %m%n"/>
+        </Console>
+        <File name="File" fileName="/tmp/TestLogs.log" append="true">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c:%L - %m%n</Pattern>
+            </PatternLayout>
+        </File>
+        <NoSql name="Mongo4">
+            <MongoDb4 capped="true" collectionSize="104857600"
+                              connection="mongodb://localhost:27017/Logs.log4j2"
+            />
+        </NoSql>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.test.log4j2" level="info" additivity="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="File"/>
+         </Root>
+        <Logger name="com.test.log4j2" level="info">
+            <AppenderRef ref="Mongo4"/>
+        </Logger>
+    </Loggers>
+</Configuration>
+
+----------------------------------------log4j properties config---------------------------------------
+
+log4j.rootLogger=Info,x
+
+Console appender
+log4j.appender.x=org.apache.log4j.ConsoleAppender
+log4j.appender.x.Target=System.out
+log4j.appender.x.layout=org.apache.log4j.PatternLayout
+log4j.appender.x.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss - SSS} %-5p %c : %L -%m%n
+
+File Appender
+
+log4j.appender.x=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.x.Target=System.out
+log4j.appender.x.File=log/out.log 	
+log4j.appender.x.layout=org.apache.log4j.PatternLayout
+lag4j.appender.x.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss -SSS} %-5p %c : %L -%m%n
+
+dependency of log4j is 
+			<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+			</dependency>
+---------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------
+
+
